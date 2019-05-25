@@ -1,10 +1,17 @@
 ### [TP3 - Sistemas-L](https://algoritmos1rw.ddns.net/tp3)
+
+## Informe
+
+https://docs.google.com/document/d/11Ux7kIeLS3RpE7Q8zX2oktoKWttnH9VRQ0h7ZgnbBBw/edit?usp=sharing
+
 ## Introduccion
+
 El excéntrico coleccionista de arte Leonard Valejanis quiere redecorar su lujosa mansión, y para ello encargó una serie de cuadros a los famosos artistas post-modernos Gloria Dianese e Isador Tenecebef.
 
 Luego de una ardua reunión de brainstorming, la temática elegida resultó ser imágenes generadas por computadora. Los artistas subcontratarán al mejor equipo de arte digital de los últimos 50 años: el curso de Algoritmos y Programación 1 "Adagio Yeses" de FIUBA.
 
 ## Consigna
+
 Implementar un programa que permita generar imágenes fractales, mediante un algoritmo basado en sistemas-L, una simulación de gráficos tortuga y el formato de imágenes estándar SVG. Explicaremos a continuación cada uno de estos conceptos.
 
 Gráficos tortuga
@@ -32,8 +39,6 @@ adelante 100
 pluma abajo
 adelante 100
 generaría la siguiente imagen (siendo la posición inicial de la tortuga abajo a la izquierda mirando hacia la derecha, y mostrando la tortuga en su posición final, arriba a la izquierda):
-
-
 
 En nuestra implementación, la tortuga deberá ser capaz de responder, al menos, a los siguientes comandos:
 
@@ -63,9 +68,9 @@ Este sistema tiene una sola regla de transformación, en la que el predecesor es
 
 0. F
 1. F+F-F-F+F
-2. F+F-F-F+F+F+F-F-F+F-F+F-F-F+F-F+F-F-F+F+F+F-F-F+F
-3. ...
-Podríamos seguir indefinidamente, en este caso generando una cadena cada vez más larga.
+1. F+F-F-F+F+F+F-F-F+F-F+F-F-F+F-F+F-F-F+F+F+F-F-F+F
+1. ...
+   Podríamos seguir indefinidamente, en este caso generando una cadena cada vez más larga.
 
 Otro ejemplo, esta vez con dos reglas:
 
@@ -78,10 +83,10 @@ El procesamiento de este sistema produce:
 
 0. F-G-G-
 1. F-G+F+G-F-GG-GG-
-2. F-G+F+G-F-GG+F-G+F+G-F+GG-F-G+F+G-F-GGGG-GGGG-
-3. ...
-Conectando los sistemas-L con gráficos tortuga
-En todos nuestros sistemas-L usaremos como alfabeto los caracteres ASCII, y a cada sistema le asignaremos además un ángulo α.
+1. F-G+F+G-F-GG+F-G+F+G-F+GG-F-G+F+G-F-GGGG-GGGG-
+1. ...
+   Conectando los sistemas-L con gráficos tortuga
+   En todos nuestros sistemas-L usaremos como alfabeto los caracteres ASCII, y a cada sistema le asignaremos además un ángulo α.
 
 Nuestras imágenes serán generadas asignando una operación de la tortuga a cada caracter, de la siguiente manera:
 
@@ -102,14 +107,12 @@ Axioma: F
 Reglas:
 F → F-F+F+F-F
 α: 90
+
 0. F
 
-
-1. F-F+F+F-F
-
+1) F-F+F+F-F
 
 2. F-F+F+F-F+F-F+F+F-F+F-F+F+F-F+F-F+F+F-F+F-F+F+F-F
-
 
 Otro ejemplo: un sistema que hace uso de la pila con los símbolos [ y ]:
 
@@ -119,8 +122,6 @@ F → FF
 X → F+[[X]-X]-F[-FX]+X
 α: 22.5
 Con este sistema, luego de varias iteraciones se genera la siguiente imagen:
-
-
 
 Archivo de descripción del sistema-L
 Nuestro programa deberá cargar la información del sistema-L a partir de un archivo con el siguiente formato:
@@ -151,8 +152,6 @@ Scalable Vector Graphics o SVG es un formato de archivo basado en XML que permit
 </svg>
 Si guardamos esto en un archivo llamado imagen.svg, podemos visualizar la imagen generada en cualquier programa capaz de interpretar archivos SVG. En particular, cualqueir navegador web moderno (por ejemplo Firefox o Chrome) puede abrir y mostrar archivos SVG.
 
-
-
 Una imagen generada por una tortuga estará compuesta por una secuencia de líneas. Una forma de traducir esto en formato SVG es usando una secuencia de elementos <line>. Por ejemplo, la imagen generada a partir del ejemplo en la sección Gráficos tortuga se puede codificar en SVG así:
 
 <svg viewBox="-50 -150 300 200" xmlns="http://www.w3.org/2000/svg">
@@ -160,7 +159,6 @@ Una imagen generada por una tortuga estará compuesta por una secuencia de líne
   <line x1="200" y1="0" x2="200" y2="-100" stroke-width="1" stroke="black" />
   <line x1="100" y1="-100" x2="0" y2="-100" stroke-width="1" stroke="black" />
 </svg>
-
 
 Atención: Por omisión SVG utiliza un sistema de coordenadas en el cual el eje Y crece hacia abajo, y por eso utilizamos coordenadas negativas en y1 e y2.
 
@@ -172,7 +170,6 @@ Otra forma equivalente de codificar la misma imagen es utilizando un único elem
   <path d="M 0 0 L 200 0 L 200 -100 M 100 -100 L 0 -100" stroke-width="1" stroke="black" fill="none"/>
 </svg>
 
-
 Con estos ejemplos es suficiente para la implementación del TP. Para más información acerca del formato SVG, consultar la documentación de SVG en MDN.
 
 El programa
@@ -183,7 +180,7 @@ la cantidad de iteraciones a procesar
 el nombre del archivo SVG a escribir
 Por ejemplo:
 
-$ python tp3.py arbol.sl 3 arbol.svg
+\$ python tp3.py arbol.sl 3 arbol.svg
 Utilizar los sistemas-L de ejemplo provistos en la sección Material para verificar que el programa funciona correctamente.
 
 ¡Extras!
@@ -215,6 +212,7 @@ Criterios de aprobación
 A continuación se describen los criterios y lineamientos que deben respetarse en el desarrollo del trabajo.
 
 # Informe
+
 El informe debe consistir en una descripción del diseño de lo implementado.
 
 Debe recordarse que la etapa de diseño es anterior a la implementación, por lo tanto debe describirse, utilizando texto y/o diagramas, cómo se va a estructurar el código para cumplir con las especificaciones de la consigna.
@@ -226,6 +224,7 @@ Algunas preguntas que deberían responderse:
 ¿Qué funciones/métodos son relevantes y cómo fue su diseño?
 
 # Código
+
 Además de satisfacer las especificaciones de la consigna, el código entregado debe cumplir los siguientes requerimientos:
 
 El código debe ser claro y legible.
@@ -235,6 +234,7 @@ El código debe estructurarse en funciones y, cuando corresponda, módulos. Las 
 Todas las funciones deben estar adecuadamente documentadas, y donde sea necesario el código debe estar acompañado de comentarios.
 
 # Entrega
+
 La entrega del trabajo consiste en:
 
 El informe y código fuente impresos. Para el código fuente utilizar una tipografía monoespacio.
