@@ -1,6 +1,10 @@
 import unittest
 from Cola import Cola
 
+# TODO: usar str(c) para comparar strigns en vez de acceder a self.items
+# para prevenir error si se cambia la logica de la cola para usar nodos
+# en vez de un array
+
 
 class TestCola(unittest.TestCase):
     def setUp(self):
