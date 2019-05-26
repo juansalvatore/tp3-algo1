@@ -10,7 +10,7 @@ class Pila:
 
     def ver_tope(self):
         if self.items == []:
-            raise Exception('Lista vacía')
+            return Exception('Lista vacía')
         return self.items[len(self.items) - 1]
 
     def esta_vacia(self):
