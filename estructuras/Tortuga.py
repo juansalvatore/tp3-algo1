@@ -95,7 +95,7 @@ def test_tortuga():
             t.derecha(90)
             assert t.avanzar(10) == (-10, 0), '-> Falló el tercer giro.'
             t.derecha(90)
-            assert t.avanzar(10) == (1, 0), '-> Falló el último giro.'
+            assert t.avanzar(10) == (0, 0), '-> Falló el último giro.'
         except Exception as e:
             raise AssertionError(
                 f'Girar a la derecha dejó de funcionar.\n\nError:\n{e}')
