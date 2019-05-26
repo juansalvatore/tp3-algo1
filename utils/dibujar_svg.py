@@ -1,16 +1,24 @@
+# TODO: Mejorar BASE_SVG y LINE para pertenecer a la clase dibujar
 BASE_SVG = """<svg viewBox="-50 -150 300 200" xmlns="http://www.w3.org/2000/svg">
-    {}
+{}
 </svg>
 """
-LINE = """<line x1="{}" y1="{}" x2="{}" y2="{}" stroke-width="{}" stroke="{}" />"""
+LINE = """\t<line x1="{}" y1="{}" x2="{}" y2="{}" stroke-width="{}" stroke="{}" />"""
+
+# TODO: Testear y documentar clase
 
 
 class Dibujar:
-    def __init__(self):
+    def __init__(self, archivo):
+        self.archivo = archivo
         self.lineas = []
         self.vector_anterior = (0, 0)
 
-    def dibujar_svg(self, destino, vector, ancho=1, color="black"):
+    def definir_archivo(self, archivo):
+        self.archivo = archivo
+
+    def dibujar_svg(self, vector, ancho=1, color="black"):
+        destino = self.archivo
         x1, y1 = self.vector_anterior
         x2, y2 = vector
         try:
@@ -25,10 +33,18 @@ class Dibujar:
                 arch.write(BASE_SVG.format(nueva_linea))
         self.vector_anterior = vector
 
+    def terminar_dibujo(self):
+        self.lineas = []
 
-d = Dibujar()
 
-d.dibujar_svg('../svg/prueba.svg', (10, 0))
-d.dibujar_svg('../svg/prueba.svg', (10, -10), color='red')
-d.dibujar_svg('../svg/prueba.svg', (0, -10))
-d.dibujar_svg('../svg/prueba.svg', (0, 0), color='blue')
+# TODO: Remover estas pruebas y concentrarlas en un archivo test_
+d = Dibujar('../svg/prueba.svg')
+
+d.dibujar_svg((10, 0))
+d.dibujar_svg((10, -10), ancho="3", color='red')
+d.dibujar_svg((0, -10))
+d.dibujar_svg((0, 0), color='blue')
+d.terminar_dibujo()
+d.definir_archivo('../svg/prueba2.svg')
+d.dibujar_svg((10, 0))
+d.dibujar_svg((10, -10), ancho="3", color='red')
