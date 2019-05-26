@@ -14,8 +14,9 @@ class Dibujar:
         self.lineas = []
         self.vector_anterior = (0, 0)
 
-    def definir_archivo(self, archivo):
+    def cambiar_archivo(self, archivo):
         self.archivo = archivo
+        self._terminar_dibujo()
 
     def dibujar_svg(self, vector, ancho=1, color="black"):
         destino = self.archivo
@@ -33,7 +34,7 @@ class Dibujar:
                 arch.write(BASE_SVG.format(nueva_linea))
         self.vector_anterior = vector
 
-    def terminar_dibujo(self):
+    def _terminar_dibujo(self):
         self.lineas = []
 
 
@@ -44,7 +45,6 @@ d.dibujar_svg((10, 0))
 d.dibujar_svg((10, -10), ancho="3", color='red')
 d.dibujar_svg((0, -10))
 d.dibujar_svg((0, 0), color='blue')
-d.terminar_dibujo()
-d.definir_archivo('../svg/prueba2.svg')
+d.cambiar_archivo('../svg/prueba2.svg')
 d.dibujar_svg((10, 0))
 d.dibujar_svg((10, -10), ancho="3", color='red')
