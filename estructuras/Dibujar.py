@@ -1,5 +1,6 @@
 # TODO: Mejorar BASE_SVG y LINE para pertenecer a la clase dibujar
-BASE_SVG = """<svg viewBox="-50 -150 300 200" xmlns="http://www.w3.org/2000/svg">
+# x-mínimo, y-mínimo, ancho y alto
+BASE_SVG = """<svg viewBox="0 -340 500 500" xmlns="http://www.w3.org/2000/svg">
 {}
 </svg>
 """
@@ -13,6 +14,8 @@ class Dibujar:
         self.archivo = archivo
         self.lineas = []
         self.vector_anterior = (0, 0)
+        self.maximo = 0
+        self.minimo = 0
 
     def cambiar_archivo(self, archivo):
         self.archivo = archivo
@@ -39,12 +42,12 @@ class Dibujar:
 
 
 # TODO: Remover estas pruebas y concentrarlas en un archivo test_
-d = Dibujar('../svg/prueba.svg')
+# d = Dibujar('../svg/prueba.svg')
 
-d.dibujar_svg((10, 0))
-d.dibujar_svg((10, -10), ancho="3", color='red')
-d.dibujar_svg((0, -10))
-d.dibujar_svg((0, 0), color='blue')
-d.cambiar_archivo('../svg/prueba2.svg')
-d.dibujar_svg((10, 0))
-d.dibujar_svg((10, -10), ancho="3", color='red')
+# d.dibujar_svg((10, 0))
+# d.dibujar_svg((10, -10), ancho="3", color='blue')
+# d.dibujar_svg((0, -10))
+# d.dibujar_svg((0, 0), color='blue')
+# d.cambiar_archivo('../svg/prueba2.svg')
+# d.dibujar_svg((10, 0))
+# d.dibujar_svg((10, -10), ancho="3", color='red')
