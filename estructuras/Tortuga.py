@@ -15,7 +15,7 @@ class Tortuga:
         ''' Avanza una cantidad n, pasada por parametro '''
         x_pos, y_pos = self.posicion
         x_dir, y_dir = self._calc_vector_director()
-        self.posicion = ((x_dir * n) + x_pos, (y_dir * n) + y_pos)
+        self.posicion = ((x_dir * n) + x_pos, - (y_dir * n) + y_pos)
         return self.posicion
 
     def izquierda(self, angulo):
@@ -32,12 +32,13 @@ class Tortuga:
         x, y = self.v_director
         cos_angle = round(cos(radians(self.angulo)))
         sin_angle = round(sin(radians(self.angulo)))
+        # Logica invertida para usar el formato svg
         if self.angulo < 180:
-            nuevo_x = x * cos_angle - y * sin_angle
-            nuevo_y = x * sin_angle + y * cos_angle
-        else:
             nuevo_x = x * cos_angle + y * sin_angle
             nuevo_y = x * sin_angle - y * cos_angle
+        else:
+            nuevo_x = x * cos_angle - y * sin_angle
+            nuevo_y = x * sin_angle + y * cos_angle
         return nuevo_x, nuevo_y
 
     def __str__(self):
