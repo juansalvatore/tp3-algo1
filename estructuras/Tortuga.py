@@ -58,7 +58,8 @@ class Tortuga:
         return f'posicion: ({x},{y}), angulo: {self.angulo}'
 
 
-def test_tortuga():
+# Ejecuta los tests solo al instanciar la clase Tortuga, no al importar el archivo.
+if __name__ == '__main__':
     """
         Testea que tortuga pueda ser instanciada, que se pueda girar a la izquierda 
         y a derecha y que las tuplas representantes de las posiciónes sean correctas 
@@ -101,6 +102,3 @@ def test_tortuga():
                 f'Girar a la derecha dejó de funcionar.\n\nError:\n{e}')
     except Exception as error:
         print(f'./estructuras/Tortuga.py\n\n{error}')
-
-
-test_tortuga()
