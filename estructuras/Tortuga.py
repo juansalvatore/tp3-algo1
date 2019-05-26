@@ -1,4 +1,4 @@
-from math import cos, sin, radians, floor, ceil
+from math import cos, sin, radians
 from Pluma import Pluma
 
 
