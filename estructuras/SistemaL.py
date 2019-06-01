@@ -11,7 +11,7 @@ class SistemaL:
     def generar(self):
         ''''''
         self._procesar_archivo(self.archivo)
-        return self._generar_camino(self.axioma)
+        return self._generar_camino_iterativo(self.axioma)
 
     def _procesar_archivo(self, arch):
         ''' Recibe un archivo, itera las primeras dos filas del mismo. Y llama a otro método que normalice
@@ -45,13 +45,16 @@ class SistemaL:
             return self._generar_camino(resultado, iteracion-1)
         return resultado, self.angulo
     
-    def _generar_camino_iterativo(self, resultado, iteracion=10):
+    def _generar_camino_iterativo(self, cadena, iteracion=6):
         ''' Método iterativo para la generación del camino que recorrerán las tortugas utilizadas '''
-        cadena = self.axioma
         cadena_por_regla = []
-        while iteraciones == 0:
-            for char in cadena:
-                cadena_por_regla.append(self.reglas[char])
+        while iteracion > 1:
+            for letra in cadena:
+                if letra in self.reglas:
+                    cadena_por_regla += self.reglas[letra]
+                else:
+                    cadena_por_regla += letra
             cadena = ''.join(cadena_por_regla)
             cadena_por_regla = []
-            iteraciones -= 1
+            iteracion -= 1
+        return cadena, self.angulo
