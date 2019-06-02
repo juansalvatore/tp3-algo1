@@ -1,6 +1,6 @@
 # TODO: Mejorar BASE_SVG y LINE para pertenecer a la clase dibujar
 # x-mínimo, y-mínimo, ancho y alto
-BASE_SVG = """<svg viewBox="0 -340 500 500" xmlns="http://www.w3.org/2000/svg">
+BASE_SVG = """<svg viewBox="{} {} {} {}" xmlns="http://www.w3.org/2000/svg">
 {}
 </svg>
 """
@@ -14,8 +14,10 @@ class Dibujar:
         self.archivo = archivo
         self.lineas = []
         self.vector_anterior = (0, 0)
-        self.maximo = 0
-        self.minimo = 0
+        self.maximo_x = 0
+        self.maximo_y = 0
+        self.minimo_x = 0
+        self.minimo_y = 0
 
     def cambiar_archivo(self, archivo):
         self.archivo = archivo
@@ -29,8 +31,18 @@ class Dibujar:
             with open(destino) as arch:
                 with open(destino, 'w') as f:
                     nueva_linea = LINE.format(x1, y1, x2, y2, ancho, color)
+                    if x2 < self.maximo_x:
+                        self.maximo_x = x2
+                    if y2 < self.maximo_y:
+                        self.maximo_y = y2
+                    if x2 > self.minimo_x:
+                        self.minimo_x = x2
+                    if y2 > self.minimo_y:
+                        self.minimo_y = y2
                     self.lineas.append(nueva_linea)
-                    f.write(BASE_SVG.format('\n'.join(self.lineas)))
+                    f.write(BASE_SVG.format(self.maximo_x - 10,
+                                            self.maximo_y - 10, -1 * self.maximo_x + self.minimo_x + 20,
+                                            -1 * self.maximo_y + self.minimo_y + 20, '\n'.join(self.lineas)))
         except:
             with open(destino, 'w') as arch:
                 nueva_linea = LINE.format(x1, y1, x2, y2, ancho, color)
