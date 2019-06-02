@@ -4,7 +4,7 @@ from estructuras.Pluma import Pluma
 from estructuras.Tortuga import Tortuga
 from estructuras.SistemaL import SistemaL
 from estructuras_aux.Pila import Pila
-
+from helper.constantes import *
 
 class Main:
     def __init__(self):
@@ -22,28 +22,28 @@ class Main:
         self.angulos.apilar(self.angulo)
 
         self.OPERACIONES = {
-            'F': lambda x: self.t.avanzar(x),
-            'G': lambda x: self.t.avanzar(x),
-            'f': lambda x: self.avanzar_sin_escribir(x),
-            'g': lambda x: self.avanzar_sin_escribir(x),
-            '+': lambda ang: self.t.derecha(ang),
-            '-': lambda ang: self.t.izquierda(ang),
-            '|': lambda ang: self.t.izquierda(ang),  # usar derecha seria lo mismo
-            '[': lambda x: self.apilar_tortuga(),
-            ']': lambda x: self.desapilar_tortuga()
+            AVANZAR_F: lambda x: self.t.avanzar(x),
+            AVANZAR_G: lambda x: self.t.avanzar(x),
+            AVANZAR_SIN_ESCRIBIR_F: lambda x: self.avanzar_sin_escribir(x),
+            AVANZAR_SIN_ESCRIBIR_G: lambda x: self.avanzar_sin_escribir(x),
+            GIRAR_DERECHA: lambda ang: self.t.derecha(ang),
+            GIRAR_IZQUIERDA: lambda ang: self.t.izquierda(ang),
+            GIRAR_180: lambda ang: self.t.izquierda(ang),  # usar derecha seria lo mismo
+            APILAR: lambda x: self.apilar_tortuga(),
+            DESAPILAR: lambda x: self.desapilar_tortuga()
         }
         self.procesar()
 
     def procesar(self):
         unidad = 4
         for operacion in self.camino:
-            if operacion == '+' or operacion == '-':
+            if operacion == GIRAR_DERECHA or operacion == GIRAR_IZQUIERDA:
                 self.OPERACIONES[operacion](self.angulo)
                 continue
-            elif operacion == '|':
+            elif operacion == GIRAR_180:
                 self.OPERACIONES[operacion](180)
                 continue
-            elif operacion == '[' or operacion == ']':
+            elif operacion == APILAR or operacion == DESAPILAR:
                 self.OPERACIONES[operacion](self.tortugas)
                 continue
             if operacion in self.OPERACIONES:
