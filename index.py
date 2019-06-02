@@ -56,13 +56,18 @@ class Main:
         self.p.pluma_abajo()
 
     def apilar_tortuga(self):
-        t = Tortuga(angulo=self.angulo)
+        if self.tortugas.esta_vacia():
+            t = Tortuga(angulo=self.angulo)
+        else:
+            print(self.tortugas.ver_tope().get_angulo())
+            t = Tortuga(angulo=270)
         self.tortugas.apilar(t)
 
     def desapilar_tortuga(self):
         self.tortugas.desapilar()
-        self.d.actualizar_vector_anterior(
-            self.tortugas.ver_tope().get_posicion())
+        # self.d.actualizar_vector_anterior(
+        #     self.tortugas.ver_tope().get_posicion())
+        # self.d.dibujar_svg((122, 22))
 
     def _validar_entrada(self):
         if len(sys.argv) == 3:
