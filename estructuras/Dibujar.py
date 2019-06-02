@@ -1,6 +1,6 @@
 # TODO: Mejorar BASE_SVG y LINE para pertenecer a la clase dibujar
 # x-mínimo, y-mínimo, ancho y alto
-BASE_SVG = """<svg viewBox="{} {} {} {}" xmlns="http://www.w3.org/2000/svg">
+BASE_SVG = """<svg viewBox="{} {} {} {}" xmlns="http://www.w3.org/2000/svg" style="background: white">
 {}
 </svg>
 """
