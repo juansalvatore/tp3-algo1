@@ -45,7 +45,7 @@ class SistemaL:
             return self._generar_camino(resultado, iteracion-1)
         return resultado, self.angulo
 
-    def _generar_camino_iterativo(self, cadena, iteracion=4):
+    def _generar_camino_iterativo(self, cadena, iteracion=6):
         ''' Método iterativo para la generación del camino que recorrerán las tortugas utilizadas '''
         cadena_por_regla = []
         while iteracion > 1:

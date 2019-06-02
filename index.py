@@ -35,7 +35,7 @@ class Main:
         self.procesar()
 
     def procesar(self):
-        unidad = 4
+        unidad = 10
         for operacion in self.camino:
             if operacion == GIRAR_DERECHA or operacion == GIRAR_IZQUIERDA:
                 self.OPERACIONES[operacion](self.angulo)
@@ -61,8 +61,8 @@ class Main:
 
     def desapilar_tortuga(self):
         self.tortugas.desapilar()
-        self.d.actualizar_vector_anterior((0, 0))
-        # self.tortugas.ver_tope().get_posicion()
+        self.d.actualizar_vector_anterior(
+            self.tortugas.ver_tope().get_posicion())
 
     def _validar_entrada(self):
         if len(sys.argv) == 3:
