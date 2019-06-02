@@ -9,7 +9,8 @@ class SistemaL:
         self.archivo = arch
 
     def generar(self):
-        ''''''
+        ''' Inicia el proceso del archivo pasado como parámetro al SistemaL. Finalizado el proceso
+            del archivo, genera el camino que recorrerá la tortuga. '''
         self._procesar_archivo(self.archivo)
         return self._generar_camino_iterativo(self.axioma)
 
