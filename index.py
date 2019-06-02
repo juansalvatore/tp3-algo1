@@ -8,9 +8,12 @@ from helper.constantes import *
 
 class Main:
     def __init__(self):
-        self.ruta_archivo, self.ruta_svg = sys.argv[1], sys.argv[2]
+        try:
+            self.ruta_archivo, self.ruta_svg = self._validar_entrada()
+        except IndexError as err:
+            print(err)
+            return None
         self.camino, self.angulo = SistemaL(self.ruta_archivo).generar()
-
         self.t = Tortuga(angulo=self.angulo)
         self.p = Pluma()
         self.d = Dibujar(self.ruta_svg)
@@ -63,5 +66,10 @@ class Main:
     def desapilar_tortuga(self):
         self.tortugas.desapilar()
         self.angulos.desapilar()
+
+    def _validar_entrada(self):
+        if len(sys.argv) == 3:
+            return sys.argv[1], sys.argv[2]
+        raise IndexError("error: el programa se debe ejecutar de la forma: python3 <nombre_archivo> <ruta_sistema_sl> <nombre_svg>")
 
 Main()
