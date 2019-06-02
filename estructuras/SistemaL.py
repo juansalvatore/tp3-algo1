@@ -19,7 +19,7 @@ class SistemaL:
             las reglas '''
         try:
             with open(arch, 'r') as archivo:
-                self.angulo = int(next(archivo).rstrip('\n'))
+                self.angulo = float(next(archivo).rstrip('\n'))
                 self.axioma = next(archivo).rstrip('\n')
                 self._normalizar_reglas(archivo)
         except IOError as err:
@@ -32,7 +32,7 @@ class SistemaL:
             caracter, regla = regla.rstrip('\n').split(' ')
             self.reglas[caracter] = regla
 
-    def _generar_camino(self, resultado, iteracion=4):
+    def _generar_camino(self, resultado, iteracion=2):
         ''' Método recursivo para la generación del camino que recorrerán las tortugas utilizadas '''
         if iteracion > 0:
             nueva_cadena = ''
@@ -42,11 +42,10 @@ class SistemaL:
                 else:
                     nueva_cadena += letra
             resultado = nueva_cadena
-            print(resultado)
             return self._generar_camino(resultado, iteracion-1)
         return resultado, self.angulo
-    
-    def _generar_camino_iterativo(self, cadena, iteracion=6):
+
+    def _generar_camino_iterativo(self, cadena, iteracion=4):
         ''' Método iterativo para la generación del camino que recorrerán las tortugas utilizadas '''
         cadena_por_regla = []
         while iteracion > 1:
@@ -58,4 +57,6 @@ class SistemaL:
             cadena = ''.join(cadena_por_regla)
             cadena_por_regla = []
             iteracion -= 1
+            print(cadena)
+
         return cadena, self.angulo

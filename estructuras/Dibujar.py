@@ -52,6 +52,9 @@ class Dibujar:
     def _terminar_dibujo(self):
         self.lineas = []
 
+    def actualizar_vector_anterior(self, nuevo_vector):
+        self.vector_anterior = nuevo_vector
+
 
 # TODO: Remover estas pruebas y concentrarlas en un archivo test_
 # d = Dibujar('../svg/prueba.svg')

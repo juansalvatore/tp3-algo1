@@ -5,11 +5,10 @@ from math import cos, sin, radians
 class Tortuga:
     ''' Representacion del elemento que realiza graficas Tortuga. (FALTA DOCUMENTAR COMANDOS) '''
 
-    def __init__(self, posicion=(40, 0), v_director=(1, 0),  angulo=0):
+    def __init__(self, posicion=(0, 0), v_director=(1, 0),  angulo=0):
         self.posicion = posicion
         self.v_director = v_director
         self.angulo = angulo
-        # self.pluma = Pluma()
 
     def avanzar(self, n=1):
         '''
@@ -19,7 +18,6 @@ class Tortuga:
         x_pos, y_pos = self.posicion
         x_dir, y_dir = self._calc_vector_director()
         self.posicion = ((x_dir * n) + x_pos, - (y_dir * n) + y_pos)
-        # self.v_director = (x_dir, y_dir)
         return self.posicion
 
     def izquierda(self, angulo):
@@ -47,13 +45,19 @@ class Tortuga:
         sin_angle = sin(radians(self.angulo))
         # Logica invertida para usar el formato svg
         if self.angulo < 180:
-            nuevo_x = x * cos_angle + y * sin_angle
-            nuevo_y = x * sin_angle - y * cos_angle
+            nuevo_x = x * cos_angle
+            nuevo_y = x * sin_angle
         else:
-            nuevo_x = x * cos_angle - y * sin_angle
-            nuevo_y = x * sin_angle + y * cos_angle
+            nuevo_x = x * cos_angle
+            nuevo_y = x * sin_angle
         return nuevo_x, nuevo_y
 
     def __str__(self):
         x, y = self.posicion
         return f'posicion: ({x},{y}), angulo: {self.angulo}'
+
+    def get_posicion(self):
+        return self.posicion
+
+    def get_angulo(self):
+        return self.angulo
