@@ -1,10 +1,10 @@
 class Pluma:
     ''' Representacion de una pluma '''
 
-    def _init_(self, color, ancho):
-        self.color = color
+    def __init__(self, color="black", ancho=1):
         self.ancho = ancho
         self.escribir = True
+        self.color = color
 
     def pluma_arriba(self):
         ''' La pluma deja de escribir '''
@@ -31,4 +31,3 @@ class Pluma:
         ''' Dado un ancho, modifica el ancho de la pluma. Devuelve el nuevo ancho '''
         self.ancho = ancho
         return self.ancho
-
