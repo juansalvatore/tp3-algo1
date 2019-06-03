@@ -1,4 +1,4 @@
-
+from constantes import *
 class SistemaL:
     ''' Representación del SistemaL'''
 
@@ -32,20 +32,7 @@ class SistemaL:
             caracter, regla = regla.rstrip('\n').split(' ')
             self.reglas[caracter] = regla
 
-    def _generar_camino(self, resultado, iteracion=2):
-        ''' Método recursivo para la generación del camino que recorrerán las tortugas utilizadas '''
-        if iteracion > 0:
-            nueva_cadena = ''
-            for letra in resultado:
-                if letra in self.reglas:
-                    nueva_cadena += self.reglas[letra]
-                else:
-                    nueva_cadena += letra
-            resultado = nueva_cadena
-            return self._generar_camino(resultado, iteracion-1)
-        return resultado, self.angulo
-
-    def _generar_camino_iterativo(self, cadena, iteracion=6):
+    def _generar_camino_iterativo(self, cadena, iteracion=ITERACIONES):
         ''' Método iterativo para la generación del camino que recorrerán las tortugas utilizadas '''
         cadena_por_regla = []
         while iteracion > 1:
