@@ -1,10 +1,6 @@
 import unittest
 from Pila import Pila
 
-# TODO: usar str(p) para comparar strigns en vez de acceder a self.items
-# para prevenir error si se cambia la logica de la pila para usar nodos
-# en vez de un array
-
 
 class TestPila(unittest.TestCase):
     def setUp(self):
