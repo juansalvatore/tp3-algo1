@@ -8,19 +8,20 @@ from constantes import *
 
 
 def main():
-    ''' 
+    '''
         Inicia el proceso de generación de imágenes fractales.
         comando: python3 <nombre_programa> <nombre_archivo_sl> <nombre_archivo_svg_destino>
         pre: el nombre archivo debe tener la ruta relativa correspondiente
     '''
     try:
-        if len(sys.argv) == 3:
-            ruta_archivo, ruta_svg = sys.argv[INDICE_RUTA], sys.argv[INDICE_SVG]
+        if len(sys.argv) == 4:
+            ruta_archivo, iteraciones, ruta_svg = sys.argv[
+                INDICE_RUTA], sys.argv[INDICE_ITERACIONES], sys.argv[INDICE_SVG]
     except Exception:
         raise Exception(
             "Error: el programa se debe ejecutar de la forma: python3 <nombre_archivo> <ruta_sistema_sl> <nombre_svg>")
 
-    camino, angulo_constante = SistemaL(ruta_archivo).generar()
+    camino, angulo_constante = SistemaL(ruta_archivo).generar(int(iteraciones))
 
     pluma = Pluma()
     dibujo = Dibujar(ruta_svg)
@@ -52,7 +53,7 @@ def main():
 
 
 def apilar(pila_tortugas, pluma, angulo_constante, color_index):
-    ''' 
+    '''
         Recibe una pluma, una pila de tortugas, un índice de color.
         Apila una tortuga, con un color diferente, con el ángulo que tenía la última tortuga usada.
     '''

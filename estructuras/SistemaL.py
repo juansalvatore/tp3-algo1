@@ -1,4 +1,6 @@
 from constantes import *
+
+
 class SistemaL:
     ''' Representación del SistemaL'''
 
@@ -8,11 +10,11 @@ class SistemaL:
         self.reglas = {}
         self.archivo = arch
 
-    def generar(self):
+    def generar(self, iteraciones):
         ''' Inicia el proceso del archivo pasado como parámetro al SistemaL. Finalizado el proceso
             del archivo, genera el camino que recorrerá la tortuga. '''
         self._procesar_archivo(self.archivo)
-        return self._generar_camino_iterativo(self.axioma)
+        return self._generar_camino_iterativo(self.axioma, iteraciones)
 
     def _procesar_archivo(self, arch):
         ''' Recibe un archivo, itera las primeras dos filas del mismo. Y llama a otro método que normalice
