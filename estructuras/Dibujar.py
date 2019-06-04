@@ -70,15 +70,3 @@ class Dibujar:
             que posición se dibujará la linea siguiente.
         """
         self.vector_anterior = nuevo_vector
-
-
-# TODO: Remover estas pruebas y concentrarlas en un archivo test_
-# d = Dibujar('../svg/prueba.svg')
-
-# d.dibujar_svg((10, 0))
-# d.dibujar_svg((10, -10), ancho="3", color='blue')
-# d.dibujar_svg((0, -10))
-# d.dibujar_svg((0, 0), color='blue')
-# d.cambiar_archivo('../svg/prueba2.svg')
-# d.dibujar_svg((10, 0))
-# d.dibujar_svg((10, -10), ancho="3", color='red')
